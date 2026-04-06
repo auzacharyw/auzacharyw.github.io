@@ -4,7 +4,7 @@ title:      Introduction
 subtitle:   个人简介。
 date:       2005-12-24
 author:     Zachary Wang
-header-img: img/post-bg-article.jpg
+header-img: img/Post_bg.jpg
 catalog: true
 tags:
     - Summary
