@@ -4,7 +4,7 @@ title:      A Story of Love
 subtitle:   Love is all you need.
 date:       2026-04-03
 author:     Zachary Wang
-header-img: img/post-bg-article.jpg
+header-img: img/Post_bg.jpg
 catalog: true
 tags:
     - emoji
