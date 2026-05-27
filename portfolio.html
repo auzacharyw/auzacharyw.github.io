@@ -9,30 +9,89 @@ header-img: "img/avatar.jpg"
     <h2>Portfolio</h2>
 
     <p>
-        Here are some selected projects and work samples. I will keep adding more
-        projects as I build and publish them.
+        This page collects project articles and supporting notes. Projects show
+        finished or ongoing work, while notes explain the ideas behind them.
     </p>
 
     <hr>
 
-    <div class="project">
-        <h3>Personal Website</h3>
+    <h3>Projects</h3>
+
+    {% for project in site.projects %}
+        <div class="project">
+            <h3>
+                <a href="{{ project.url | prepend: site.baseurl }}">
+                    {{ project.title }}
+                </a>
+            </h3>
+
+            {% if project.description %}
+                <p>{{ project.description }}</p>
+            {% endif %}
+
+            {% if project.tech %}
+                <p><strong>Tech:</strong> {{ project.tech }}</p>
+            {% endif %}
+
+            {% if project.github or project.demo %}
+                <p>
+                    {% if project.github %}
+                        <a href="{{ project.github }}">GitHub</a>
+                    {% endif %}
+
+                    {% if project.github and project.demo %}
+                        |
+                    {% endif %}
+
+                    {% if project.demo %}
+                        <a href="{{ project.demo }}">Live Demo</a>
+                    {% endif %}
+                </p>
+            {% endif %}
+
+            {% if project.note %}
+                <p>
+                    <a href="{{ project.note | prepend: site.baseurl }}">Project Note</a>
+                </p>
+            {% endif %}
+        </div>
+
+        {% unless forloop.last %}
+            <hr>
+        {% endunless %}
+    {% endfor %}
+
+    {% if site.projects.size == 0 %}
         <p>
-            A GitHub Pages personal site for writing notes, sharing projects, and
-            keeping a public portfolio.
+            Add project articles in the <code>_projects</code> folder.
         </p>
-        <p><strong>Tech:</strong> Jekyll, HTML, CSS, GitHub Pages</p>
-        <p>
-            <a href="https://github.com/auzacharyw/auzacharyw.github.io">GitHub Repository</a>
-        </p>
-    </div>
+    {% endif %}
 
     <hr>
 
-    <div class="project">
-        <h3>More Projects Coming Soon</h3>
+    <h3>Notes</h3>
+
+    {% for note in site.notes %}
+        <div class="note">
+            <h3>
+                <a href="{{ note.url | prepend: site.baseurl }}">
+                    {{ note.title }}
+                </a>
+            </h3>
+
+            {% if note.description %}
+                <p>{{ note.description }}</p>
+            {% endif %}
+        </div>
+
+        {% unless forloop.last %}
+            <hr>
+        {% endunless %}
+    {% endfor %}
+
+    {% if site.notes.size == 0 %}
         <p>
-            Add your coursework, apps, websites, data projects, or GitHub links here.
+            Add note articles in the <code>_notes</code> folder.
         </p>
-    </div>
+    {% endif %}
 </div>
